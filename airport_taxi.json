@@ -1839,10 +1839,10 @@
         "type": "http",
         "scheme": "basic"
       },
-      "x_gojo_request_signature": {
-        "type": "apiKey",
-        "name": "api_key",
-        "in": "header",
+      "HMACAuth": {
+        "type": "http",
+        "scheme": "hmac-sha256",
+        "x_gojo_request_signatur": "host;x-oasis-date;x-oasis-body-sha256",
         "description": "HMAC hash combining your shared secret and the request payload. Utilize this hash to authenticate and validate incoming requests from Good Journey. This ensures the security and integrity of the data received."
       }
     }
@@ -1884,7 +1884,7 @@
         },
         "security": [
           {
-            "x_gojo_request_signature": []
+            "HMACAuth": []
           }
         ]
       }
@@ -2022,7 +2022,7 @@
         },
         "security": [
           {
-            "x_gojo_request_signature": []
+            "HMACAuth": []
           }
         ]
       }
@@ -2066,7 +2066,7 @@
         },
         "security": [
           {
-            "x_gojo_request_signature": []
+            "HMACAuth": []
           }
         ]
       }
