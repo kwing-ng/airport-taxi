@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "AIRPORT-TAXI demand - OpenAPI",
-    "description": "This is AIRPORT TAXI OpenAPI 3.0 specification.",
+    "description": "__AIRPORT DEMAND APIs__\n* __Basic authentication__ is a simple authentication scheme built into the HTTP protocol. Your HTTP requests with the Authorization header that contains the word Basic word followed by a space and a base64-encoded string username:password\n\nExample: Authorization: Basic ZGVtbzpwQDU1dzByZA=\n* __Bearer Token__ is a cryptic string, you will retrieve the TOKEN via get Access Token API. You must send this token in the Authorization header when making requests. \n\nExample: Authorization: Bearer strings\n\n\n__WEBHOOKs__ : We also support 3 webhooks to notify booking infomation. Please register the URL to AIRPORT TAXI.\n* __assignedDriver__ When a driver is assigned to a booking. It sends detailed information about the driver and the assignment to your register URL\n* __bookingStatus__ When a booking status is changed, It provides comprehensive updates for each stage of the booking process.\n* __driverLocation__ This is used for realtime tracking, henever there is an update to a driver's location.\n",
     "termsOfService": "https://www.airport-taxi.com/terms-and-conditions",
     "contact": {
       "email": "lucas@airport-taxi.com"
@@ -22,7 +22,7 @@
   "tags": [
     {
       "name": "Authentication",
-      "description": "HTTP Basic access authentication to retrive Access Token for further access"
+      "description": "Retrieve Bearer Token\n"
     },
     {
       "name": "Quotes",
@@ -51,7 +51,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "retrieve Access Token",
+        "summary": "http basic auth to retrieve Access Token",
         "description": "Retrieve an authentication token for API access. This token is required for all subsequent API requests.",
         "operationId": "retrieveToken",
         "responses": {
