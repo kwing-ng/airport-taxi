@@ -74,6 +74,28 @@
         "description": "Send a ride request"
         "content":
           "application/json":
+            examples:
+                quotation:
+                  value:
+                    pickupDateTime: '2024-12-30T10:00:00.000Z'
+                    pickupTimezone: Asia/Tokyo
+                    pickup:
+                      latitude: 35.7781475
+                      longitude: 140.380931
+                      address: Narita International Airport (NRT), 1-1 Furugome, Narita
+                      city: Chiba
+                      country: JP
+                      postcode: '00000'
+                    destination:
+                      latitude: 35.6923658
+                      longitude: 139.7012228
+                      address: Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City
+                      city: Tokyo
+                      country: JP
+                      postcode: '00000'
+                    luggage: 2
+                    passengers: 1
+                    
             "schema":
               "type": "object"
               "required":
@@ -140,6 +162,34 @@
           "description": "Successful operation"
           "content":
             "application/json":
+              examples: 
+                quotation:
+                  value: 
+                   - quoteId: acac177d-f43b-432e-b41f-63b29d9fdd59
+                     expiresAt: '2024-10-04T07:07:26.044Z'
+                     vehicleType: SUV
+                     price:
+                       value: 200
+                       currency: USD
+                     luggage: 4
+                     passengers: 6
+                     servicesAvailable: []
+                     provider:
+                       name: Testing
+                       phone: ''
+                   - quoteId: 3c0d49db-2b5d-41ec-b3ec-1f0253fd7bea
+                     expiresAt: '2024-10-04T07:07:26.044Z'
+                     vehicleType: Sedan
+                     price:
+                       value: 100
+                       currency: USD
+                     luggage: 2
+                     passengers: 4
+                     servicesAvailable: []
+                     provider:
+                       name: Testing
+                       phone: ''
+                   
               "schema":
                 "type": "array"
                 "items":
