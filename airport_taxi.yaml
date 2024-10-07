@@ -6,7 +6,7 @@
   "termsOfService": "https://www.airport-taxi.com/terms-and-conditions"
   "contact":
     "email": "lucas@airport-taxi.com"
-  "version": "1.0"
+  "version": "1.0.0"
 "servers":
   -
     "url": "https://api.airport-taxi.com"
@@ -49,7 +49,7 @@
               "examples":
                 "result":
                   "value":
-                    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbGVldElkIjoiYXBpLXNhbmRib3gtZmxlZXQiLCJ0aGlyZFBhcnR5IjoiQVAgc2FuZGJveCIsImFwcE5hbWUiOiJBUCBzYW5kYm94IiwiX2lkIjoiNjYyOGUxZjg1ZmM3Mjc1YzM5ODJiNmE4IiwiY29ycG9yYXRlIjoiIiwiaWF0IjoxNzI4MjgwNzI5LCJleHAiOjE3MjgyODQzMjksImF1ZCI6ImF1dGguZ29qby5nbG9iYWwifQ.tnXDYhIsA7UP8WIKNJvgM3MXtfYmBU6zcu1EYXx1fD8"
+                    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbGVldElkIjoiYXBpLXNhbmRib3gtZmxlZXQiLCJ0aGlyZFBhcnR5IjoiQVAgc2FuZGJveCIsImFwcE5hbWUiOiJBUCBzYW5kYm94IiwiX2lkIjoiNjYyOGUxZjg1ZmM3Mjc1YzM5ODJiNmE4IiwiY29ycG9yYXRlIjoiIiwiaWF0IjoxNzI4MjgwNzI5LCJleHAiOjE3MjgyODQzMjksImF1ZCI6ImF1dGguZ29qby5nbG9iYWwifQ.tnXDYhIsA7UP8WIKNJvgM3MXtfYmBU6zcu1EYXx1fD9"
                     "token_type": "Bearer"
                     "expires_in": 3600
               "schema":
