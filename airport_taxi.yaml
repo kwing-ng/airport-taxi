@@ -1027,9 +1027,101 @@
                     "page": 1
               "schema":
                 "type": "object"
-                "additionalProperties":
-                  "type": "integer"
-                  "format": "int32"
+                "properties":
+                  "list":
+                    "type": "array"
+                    "items":
+                      "type": "object"
+                      "properties":
+                        "bookId":
+                          "type": "string"
+                        "status":
+                          "type": "string"
+                        "bookingReference":
+                          "type": "string"
+                        "quoteId":
+                          "type": "string"
+                        "passenger":
+                          "type": "object"
+                          "properties":
+                            "title":
+                              "type": "string"
+                            "firstName":
+                              "type": "string"
+                            "lastName":
+                              "type": "string"
+                            "phone":
+                              "type": "string"
+                        "driver":
+                          "type": "object"
+                          "properties": {}
+                        "pickup":
+                          "type": "object"
+                          "properties":
+                            "latitude":
+                              "type": "number"
+                            "longitude":
+                              "type": "number"
+                            "postcode":
+                              "type": "string"
+                            "city":
+                              "type": "string"
+                            "timezone":
+                              "type": "string"
+                            "offset":
+                              "type": "string"
+                            "country":
+                              "type": "string"
+                            "address":
+                              "type": "string"
+                        "destination":
+                          "type": "object"
+                          "properties":
+                            "latitude":
+                              "type": "number"
+                            "longitude":
+                              "type": "number"
+                            "postcode":
+                              "type": "string"
+                            "city":
+                              "type": "string"
+                            "timezone":
+                              "type": "string"
+                            "offset":
+                              "type": "string"
+                            "country":
+                              "type": "string"
+                            "address":
+                              "type": "string"
+                        "pickupDateTime":
+                          "type": "string"
+                          "format": "date-time"
+                        "comment":
+                          "type": "string"
+                        "noPassengers":
+                          "type": "integer"
+                          "format": "int32"
+                        "noLuggage":
+                          "type": "integer"
+                          "format": "int32"
+                        "price":
+                          "type": "object"
+                          "properties":
+                            "value":
+                              "type": "number"
+                            "currencyISO":
+                              "type": "string"
+                        "vehicleType":
+                          "type": "string"
+                  "size":
+                    "type": "integer"
+                    "format": "int32"
+                  "total":
+                    "type": "integer"
+                    "format": "int32"
+                  "page":
+                    "type": "integer"
+                    "format": "int32"
       "security":
         -
           "bearerAuth": []
@@ -1411,6 +1503,103 @@
           "type": "string"
         "status":
           "type": "string"
+    "HistoryResponse":
+      "type": "object"
+      "properties":
+        "list":
+          "type": "array"
+          "items":
+            "type": "object"
+            "properties":
+              "bookId":
+                "type": "string"
+              "status":
+                "type": "string"
+              "bookingReference":
+                "type": "string"
+              "quoteId":
+                "type": "string"
+              "passenger":
+                "type": "object"
+                "properties":
+                  "title":
+                    "type": "string"
+                  "firstName":
+                    "type": "string"
+                  "lastName":
+                    "type": "string"
+                  "phone":
+                    "type": "string"
+              "driver":
+                "type": "object"
+                "properties": {}
+              "pickup":
+                "type": "object"
+                "properties":
+                  "latitude":
+                    "type": "number"
+                  "longitude":
+                    "type": "number"
+                  "postcode":
+                    "type": "string"
+                  "city":
+                    "type": "string"
+                  "timezone":
+                    "type": "string"
+                  "offset":
+                    "type": "string"
+                  "country":
+                    "type": "string"
+                  "address":
+                    "type": "string"
+              "destination":
+                "type": "object"
+                "properties":
+                  "latitude":
+                    "type": "number"
+                  "longitude":
+                    "type": "number"
+                  "postcode":
+                    "type": "string"
+                  "city":
+                    "type": "string"
+                  "timezone":
+                    "type": "string"
+                  "offset":
+                    "type": "string"
+                  "country":
+                    "type": "string"
+                  "address":
+                    "type": "string"
+              "pickupDateTime":
+                "type": "string"
+                "format": "date-time"
+              "comment":
+                "type": "string"
+              "noPassengers":
+                "type": "integer"
+                "format": "int32"
+              "noLuggage":
+                "type": "integer"
+                "format": "int32"
+              "price":
+                "type": "object"
+                "properties":
+                  "value":
+                    "type": "number"
+                  "currencyISO":
+                    "type": "string"
+              "vehicleType":
+                "type": "string"
+        "size":
+          "type": "integer"
+          "format": "int32"
+        "total":
+          "type": "integer"
+          "format": "int32"
+        "page":
+          "type": "integer"
+          "format": "int32"
     "WebHookAssigned":
       "type": "object"
       "properties":
