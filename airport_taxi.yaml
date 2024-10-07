@@ -133,6 +133,9 @@
                       "type": "string"
                     "postcode":
                       "type": "string"
+                      "description": >
+                        * Required but not validate this, put 00000 if you dont know
+                      
                   "type": "object"
                 "destination":
                   "required":
@@ -155,6 +158,8 @@
                       "type": "string"
                     "postcode":
                       "type": "string"
+                      "description": >
+                        * Required but not validate this, put 00000 if you dont know
                   "type": "object"
                 "luggage":
                   "type": "number"
