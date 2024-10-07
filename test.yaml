@@ -130,6 +130,7 @@
                       "type": "string"
                     "postcode":
                       "type": "string"
+                      "description": "* Required but not validate this, put 00000 if you dont know\n"
                   "type": "object"
                 "destination":
                   "required":
@@ -152,6 +153,7 @@
                       "type": "string"
                     "postcode":
                       "type": "string"
+                      "description": "* Required but not validate this, put 00000 if you dont know\n"
                   "type": "object"
                 "luggage":
                   "type": "number"
@@ -656,6 +658,7 @@
               "properties":
                 "pickupDateTime":
                   "type": "string"
+                  "description": "* `This is UTC time, need to convert the local Pickup Time to UTC datetime`\n"
                 "comment":
                   "type": "string"
                 "flightNumber":
