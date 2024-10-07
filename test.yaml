@@ -74,28 +74,27 @@
         "description": "Send a ride request"
         "content":
           "application/json":
-            examples:
-                quotation:
-                  value:
-                    pickupDateTime: '2024-12-30T10:00:00.000Z'
-                    pickupTimezone: Asia/Tokyo
-                    pickup:
-                      latitude: 35.7781475
-                      longitude: 140.380931
-                      address: Narita International Airport (NRT), 1-1 Furugome, Narita
-                      city: Chiba
-                      country: JP
-                      postcode: '00000'
-                    destination:
-                      latitude: 35.6923658
-                      longitude: 139.7012228
-                      address: Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City
-                      city: Tokyo
-                      country: JP
-                      postcode: '00000'
-                    luggage: 2
-                    passengers: 1
-                    
+            "examples":
+              "quotation":
+                "value":
+                  "pickupDateTime": "2024-12-30T10:00:00.000Z"
+                  "pickupTimezone": "Asia/Tokyo"
+                  "pickup":
+                    "latitude": 35.7781475
+                    "longitude": 140.380931
+                    "address": "Narita International Airport (NRT), 1-1 Furugome, Narita"
+                    "city": "Chiba"
+                    "country": "JP"
+                    "postcode": "00000"
+                  "destination":
+                    "latitude": 35.6923658
+                    "longitude": 139.7012228
+                    "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City"
+                    "city": "Tokyo"
+                    "country": "JP"
+                    "postcode": "00000"
+                  "luggage": 2
+                  "passengers": 1
             "schema":
               "type": "object"
               "required":
@@ -106,12 +105,10 @@
               "properties":
                 "pickupDateTime":
                   "type": "string"
-                  "description": >
-                    * `This is UTC time, so please convert the local Pickup Time to UTC time` 
+                  "description": "* `This is UTC time, need to convert the local Pickup Time to UTC datetime`\n"
                 "pickupTimezone":
                   "type": "string"
-                  "description": >
-                    * `recommend to send Supplier Timezone, e.g: Asia/Tokyo` 
+                  "description": "* `recommend to send Supplier Timezone, e.g: Asia/Tokyo`\n"
                 "pickup":
                   "required":
                     - "latitude"
@@ -166,34 +163,35 @@
           "description": "Successful operation"
           "content":
             "application/json":
-              examples: 
-                quotation:
-                  value: 
-                   - quoteId: acac177d-f43b-432e-b41f-63b29d9fdd59
-                     expiresAt: '2024-10-04T07:07:26.044Z'
-                     vehicleType: SUV
-                     price:
-                       value: 200
-                       currency: USD
-                     luggage: 4
-                     passengers: 6
-                     servicesAvailable: []
-                     provider:
-                       name: Testing
-                       phone: ''
-                   - quoteId: 3c0d49db-2b5d-41ec-b3ec-1f0253fd7bea
-                     expiresAt: '2024-10-04T07:07:26.044Z'
-                     vehicleType: Sedan
-                     price:
-                       value: 100
-                       currency: USD
-                     luggage: 2
-                     passengers: 4
-                     servicesAvailable: []
-                     provider:
-                       name: Testing
-                       phone: ''
-                   
+              "examples":
+                "quotation":
+                  "value":
+                    -
+                      "quoteId": "acac177d-f43b-432e-b41f-63b29d9fdd59"
+                      "expiresAt": "2024-10-04T07:07:26.044Z"
+                      "vehicleType": "SUV"
+                      "price":
+                        "value": 200
+                        "currency": "USD"
+                      "luggage": 4
+                      "passengers": 6
+                      "servicesAvailable": []
+                      "provider":
+                        "name": "Testing"
+                        "phone": ""
+                    -
+                      "quoteId": "3c0d49db-2b5d-41ec-b3ec-1f0253fd7bea"
+                      "expiresAt": "2024-10-04T07:07:26.044Z"
+                      "vehicleType": "Sedan"
+                      "price":
+                        "value": 100
+                        "currency": "USD"
+                      "luggage": 2
+                      "passengers": 4
+                      "servicesAvailable": []
+                      "provider":
+                        "name": "Testing"
+                        "phone": ""
               "schema":
                 "type": "array"
                 "items":
@@ -254,18 +252,18 @@
       "requestBody":
         "content":
           "application/json":
-            examples: 
-                booking:
-                  value:
-                    quoteId: f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7
-                    bookingReference: '62549263846'
-                    comment: I like to meet at Gate 2
-                    flightNumber: AA888
-                    passenger:
-                      title: Mr
-                      phone: '+12051234567'
-                      firstName: John
-                      lastName: Doe                 
+            "examples":
+              "booking":
+                "value":
+                  "quoteId": "f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7"
+                  "bookingReference": "62549263846"
+                  "comment": "I like to meet at Gate 2"
+                  "flightNumber": "AA888"
+                  "passenger":
+                    "title": "Mr"
+                    "phone": "+12051234567"
+                    "firstName": "John"
+                    "lastName": "Doe"
             "schema":
               "type": "object"
               "required":
@@ -637,24 +635,22 @@
           "in": "path"
           "description": "Booking ID"
           "required": true
-          
-                    
           "schema":
             "type": "integer"
       "requestBody":
         "content":
           "application/json":
-            examples: 
-                edit_booking:
-                  value:
-                    pickupDateTime: '2025-01-10T10:00:00.000Z'
-                    comment: I like to meet at Gate 3
-                    flightNumber: AA888
-                    passenger:
-                      title: Mr
-                      phone: '+12051234567'
-                      firstName: John
-                      lastName: Doe
+            "examples":
+              "edit_booking":
+                "value":
+                  "pickupDateTime": "2025-01-10T10:00:00.000Z"
+                  "comment": "I like to meet at Gate 3"
+                  "flightNumber": "AA888"
+                  "passenger":
+                    "title": "Mr"
+                    "phone": "+12051234567"
+                    "firstName": "John"
+                    "lastName": "Doe"
             "schema":
               "type": "object"
               "properties":
@@ -731,23 +727,16 @@
                 - "reasonCode"
                 - "reason"
               "properties":
-
                 "reasonCode":
                   "type": "integer"
-                  "enum": [0, 1 , 2 ,3]
-                  "description": >
-                    Reason code: 
-
-                    * `0` - Passenger change travel plan 
-
-                    * `1` - Passenger entered wrong location
-
-                    * `2` - Partner has another supplier
-
-                    * `3` - Others. Get reason string in key: `reason`
+                  "enum":
+                    - 0
+                    - 1
+                    - 2
+                    - 3
+                  "description": "Reason code: \n* `0` - Passenger change travel plan \n* `1` - Passenger entered wrong location\n* `2` - Partner has another supplier\n* `3` - Others. Get reason string in key: `reason`\n"
                 "reason":
                   "type": "string"
-           
       "responses":
         "200":
           "description": "successful operation"
