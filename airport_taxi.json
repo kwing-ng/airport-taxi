@@ -7,7 +7,7 @@
     "contact": {
       "email": "lucas@airport-taxi.com"
     },
-    "version": "1.0"
+    "version": "1.0.1"
   },
   "servers": [
     {
@@ -59,6 +59,15 @@
             "description": "Successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "result": {
+                    "value": {
+                      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmbGVldElkIjoiYXBpLXNhbmRib3gtZmxlZXQiLCJ0aGlyZFBhcnR5IjoiQVAgc2FuZGJveCIsImFwcE5hbWUiOiJBUCBzYW5kYm94IiwiX2lkIjoiNjYyOGUxZjg1ZmM3Mjc1YzM5ODJiNmE4IiwiY29ycG9yYXRlIjoiIiwiaWF0IjoxNzI4MjgwNzI5LCJleHAiOjE3MjgyODQzMjksImF1ZCI6ImF1dGguZ29qby5nbG9iYWwifQ.tnXDYhIsA7UP8WIKNJvgM3MXtfYmBU6zcu1EYXx1fD9",
+                      "token_type": "Bearer",
+                      "expires_in": 3600
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -103,6 +112,32 @@
           "description": "Send a ride request",
           "content": {
             "application/json": {
+              "examples": {
+                "quotation": {
+                  "value": {
+                    "pickupDateTime": "2024-12-30T10:00:00.000Z",
+                    "pickupTimezone": "Asia/Tokyo",
+                    "pickup": {
+                      "latitude": 35.7781475,
+                      "longitude": 140.380931,
+                      "address": "Narita International Airport (NRT), 1-1 Furugome, Narita",
+                      "city": "Chiba",
+                      "country": "JP",
+                      "postcode": "00000"
+                    },
+                    "destination": {
+                      "latitude": 35.6923658,
+                      "longitude": 139.7012228,
+                      "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City",
+                      "city": "Tokyo",
+                      "country": "JP",
+                      "postcode": "00000"
+                    },
+                    "luggage": 2,
+                    "passengers": 1
+                  }
+                }
+              },
               "schema": {
                 "type": "object",
                 "required": [
@@ -113,10 +148,12 @@
                 ],
                 "properties": {
                   "pickupDateTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* `This is UTC time, need to convert the local Pickup Time to UTC datetime`\n"
                   },
                   "pickupTimezone": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* `recommend to send Supplier Timezone, e.g: Asia/Tokyo`\n"
                   },
                   "pickup": {
                     "required": [
@@ -144,7 +181,8 @@
                         "type": "string"
                       },
                       "postcode": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "* Required but not validate this, put 00000 if you dont know\n"
                       }
                     },
                     "type": "object"
@@ -175,7 +213,8 @@
                         "type": "string"
                       },
                       "postcode": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "* Required but not validate this, put 00000 if you dont know\n"
                       }
                     },
                     "type": "object"
@@ -197,6 +236,44 @@
             "description": "Successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "quotation": {
+                    "value": [
+                      {
+                        "quoteId": "acac177d-f43b-432e-b41f-63b29d9fdd59",
+                        "expiresAt": "2024-10-04T07:07:26.044Z",
+                        "vehicleType": "SUV",
+                        "price": {
+                          "value": 200,
+                          "currency": "USD"
+                        },
+                        "luggage": 4,
+                        "passengers": 6,
+                        "servicesAvailable": [],
+                        "provider": {
+                          "name": "Testing",
+                          "phone": ""
+                        }
+                      },
+                      {
+                        "quoteId": "3c0d49db-2b5d-41ec-b3ec-1f0253fd7bea",
+                        "expiresAt": "2024-10-04T07:07:26.044Z",
+                        "vehicleType": "Sedan",
+                        "price": {
+                          "value": 100,
+                          "currency": "USD"
+                        },
+                        "luggage": 2,
+                        "passengers": 4,
+                        "servicesAvailable": [],
+                        "provider": {
+                          "name": "Testing",
+                          "phone": ""
+                        }
+                      }
+                    ]
+                  }
+                },
                 "schema": {
                   "type": "array",
                   "items": {
@@ -287,6 +364,22 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "examples": {
+                "booking": {
+                  "value": {
+                    "quoteId": "f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7",
+                    "bookingReference": "62549263846",
+                    "comment": "I like to meet at Gate 2",
+                    "flightNumber": "AA888",
+                    "passenger": {
+                      "title": "Mr",
+                      "phone": "+12051234567",
+                      "firstName": "John",
+                      "lastName": "Doe"
+                    }
+                  }
+                }
+              },
               "schema": {
                 "type": "object",
                 "required": [
@@ -337,6 +430,52 @@
             "description": "successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "foo": {
+                    "value": {
+                      "bookId": "2407585",
+                      "status": "accepted",
+                      "bookingReference": "AT-12345678",
+                      "quoteId": "f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7",
+                      "passenger": {
+                        "title": "Mr",
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "phone": "+12051234567"
+                      },
+                      "driver": {},
+                      "pickup": {
+                        "latitude": 35.7781475,
+                        "longitude": 140.380931,
+                        "postcode": "00000",
+                        "city": "Chiba",
+                        "timezone": "Asia/Tokyo",
+                        "offset": "+09:00",
+                        "country": "JP",
+                        "address": "Narita International Airport (NRT), 1-1 Furugome, Narita"
+                      },
+                      "destination": {
+                        "latitude": 35.6923658,
+                        "longitude": 139.7012228,
+                        "postcode": "00000",
+                        "city": "Tokyo",
+                        "timezone": "Asia/Tokyo",
+                        "offset": "+09:00",
+                        "country": "JP",
+                        "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City"
+                      },
+                      "pickupDateTime": "2024-12-30T10:00:00.000Z",
+                      "comment": "I like to meet at Gate 2",
+                      "noPassengers": 1,
+                      "noLuggage": 2,
+                      "price": {
+                        "value": 100,
+                        "currencyISO": "USD"
+                      },
+                      "vehicleType": "Sedan"
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
                   "required": [
@@ -489,6 +628,7 @@
             "name": "fromDate",
             "in": "query",
             "description": "Query From Date",
+            "example": "2024-12-20",
             "required": true,
             "schema": {
               "type": "string",
@@ -499,6 +639,7 @@
             "name": "toDate",
             "in": "query",
             "description": "Query To Date",
+            "example": "2025-01-20",
             "required": true,
             "schema": {
               "type": "string",
@@ -509,9 +650,11 @@
             "name": "page",
             "in": "query",
             "description": "Booking pagination",
+            "example": 1,
             "required": false,
             "schema": {
-              "type": "number"
+              "type": "integer",
+              "minimum": 1
             }
           }
         ],
@@ -520,6 +663,59 @@
             "description": "successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "bookings": {
+                    "value": {
+                      "list": [
+                        {
+                          "bookId": "2407585",
+                          "status": "accepted",
+                          "bookingReference": "AT-12345678",
+                          "quoteId": "f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7",
+                          "passenger": {
+                            "title": "Mr",
+                            "firstName": "John",
+                            "lastName": "Doe",
+                            "phone": "+12051234567"
+                          },
+                          "driver": {},
+                          "pickup": {
+                            "latitude": 35.7781475,
+                            "longitude": 140.380931,
+                            "postcode": "00000",
+                            "city": "Chiba",
+                            "timezone": "Asia/Tokyo",
+                            "offset": "+09:00",
+                            "country": "JP",
+                            "address": "Narita International Airport (NRT), 1-1 Furugome, Narita"
+                          },
+                          "destination": {
+                            "latitude": 35.6923658,
+                            "longitude": 139.7012228,
+                            "postcode": "00000",
+                            "city": "Tokyo",
+                            "timezone": "Asia/Tokyo",
+                            "offset": "+09:00",
+                            "country": "JP",
+                            "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City"
+                          },
+                          "pickupDateTime": "2024-12-30T10:00:00.000Z",
+                          "comment": "I like to meet at Gate 2",
+                          "noPassengers": 1,
+                          "noLuggage": 2,
+                          "price": {
+                            "value": 100,
+                            "currencyISO": "USD"
+                          },
+                          "vehicleType": "Sedan"
+                        }
+                      ],
+                      "size": 20,
+                      "total": 1,
+                      "page": 1
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -685,6 +881,7 @@
             "name": "bookId",
             "in": "path",
             "description": "Booking ID",
+            "example": 2407585,
             "required": true,
             "schema": {
               "type": "integer"
@@ -696,6 +893,52 @@
             "description": "successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "booking_detail": {
+                    "value": {
+                      "bookId": "2407585",
+                      "status": "accepted",
+                      "bookingReference": "AT-12345678",
+                      "quoteId": "44a20aac-a3e9-4a6c-8d34-26774e6a6cc7",
+                      "passenger": {
+                        "title": "Mr",
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "phone": "+12051234567"
+                      },
+                      "driver": {},
+                      "pickup": {
+                        "latitude": 35.7781475,
+                        "longitude": 140.380931,
+                        "postcode": "00000",
+                        "city": "Chiba",
+                        "timezone": "Asia/Tokyo",
+                        "offset": "+09:00",
+                        "country": "JP",
+                        "address": "Narita International Airport (NRT), 1-1 Furugome, Narita"
+                      },
+                      "destination": {
+                        "latitude": 35.6923658,
+                        "longitude": 139.7012228,
+                        "postcode": "00000",
+                        "city": "Tokyo",
+                        "timezone": "Asia/Tokyo",
+                        "offset": "+09:00",
+                        "country": "JP",
+                        "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City"
+                      },
+                      "pickupDateTime": "2024-12-30T10:00:00.000Z",
+                      "comment": "I like to meet at Gate 2",
+                      "noPassengers": 1,
+                      "noLuggage": 2,
+                      "price": {
+                        "value": 104.78,
+                        "currencyISO": "USD"
+                      },
+                      "vehicleType": "Sedan"
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
                   "required": [
@@ -848,6 +1091,7 @@
             "name": "bookId",
             "in": "path",
             "description": "Booking ID",
+            "example": 2407585,
             "required": true,
             "schema": {
               "type": "integer"
@@ -857,11 +1101,27 @@
         "requestBody": {
           "content": {
             "application/json": {
+              "examples": {
+                "edit_booking": {
+                  "value": {
+                    "pickupDateTime": "2025-01-10T10:00:00.000Z",
+                    "comment": "I like to meet at Gate 3",
+                    "flightNumber": "AA888",
+                    "passenger": {
+                      "title": "Mr",
+                      "phone": "+12051234567",
+                      "firstName": "John",
+                      "lastName": "Doe"
+                    }
+                  }
+                }
+              },
               "schema": {
                 "type": "object",
                 "properties": {
                   "pickupDateTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* `This is UTC time, need to convert the local Pickup Time to UTC datetime`\n"
                   },
                   "comment": {
                     "type": "string"
@@ -896,6 +1156,52 @@
             "description": "successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "result": {
+                    "value": {
+                      "bookId": "2407585",
+                      "status": "accepted",
+                      "bookingReference": "AT-12345678",
+                      "quoteId": "44a20aac-a3e9-4a6c-8d34-26774e6a6cc7",
+                      "passenger": {
+                        "title": "Mr",
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "phone": "+12051234567"
+                      },
+                      "driver": {},
+                      "pickup": {
+                        "latitude": 35.7781475,
+                        "longitude": 140.380931,
+                        "postcode": "00000",
+                        "city": "Chiba",
+                        "timezone": "Asia/Tokyo",
+                        "offset": "+09:00",
+                        "country": "JP",
+                        "address": "Narita International Airport (NRT), 1-1 Furugome, Narita"
+                      },
+                      "destination": {
+                        "latitude": 35.6923658,
+                        "longitude": 139.7012228,
+                        "postcode": "00000",
+                        "city": "Tokyo",
+                        "timezone": "Asia/Tokyo",
+                        "offset": "+09:00",
+                        "country": "JP",
+                        "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City"
+                      },
+                      "pickupDateTime": "2025-01-02T10:00:00.000Z",
+                      "comment": "I like to meet at Gate 3",
+                      "noPassengers": 1,
+                      "noLuggage": 2,
+                      "price": {
+                        "value": 104.78,
+                        "currencyISO": "USD"
+                      },
+                      "vehicleType": "Sedan"
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
                   "properties": {
@@ -957,6 +1263,7 @@
             "name": "bookId",
             "in": "path",
             "description": "Booking ID",
+            "example": 2407585,
             "required": true,
             "schema": {
               "type": "integer"
@@ -974,7 +1281,14 @@
                 ],
                 "properties": {
                   "reasonCode": {
-                    "type": "number"
+                    "type": "integer",
+                    "enum": [
+                      0,
+                      1,
+                      2,
+                      3
+                    ],
+                    "description": "Reason code: \n* `0` - Passenger change travel plan \n* `1` - Passenger entered wrong location\n* `2` - Partner has another supplier\n* `3` - Others. Get reason string in key: `reason`\n"
                   },
                   "reason": {
                     "type": "string"
@@ -989,6 +1303,14 @@
             "description": "successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "result": {
+                    "value": {
+                      "bookId": "2407585",
+                      "status": "canceled"
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
                   "required": [
@@ -1034,6 +1356,7 @@
             "name": "fromDate",
             "in": "query",
             "description": "Query From Date",
+            "example": "2024-12-20",
             "required": true,
             "schema": {
               "type": "string",
@@ -1044,6 +1367,7 @@
             "name": "toDate",
             "in": "query",
             "description": "Query To Date",
+            "example": "2025-01-20",
             "required": true,
             "schema": {
               "type": "string",
@@ -1054,9 +1378,11 @@
             "name": "page",
             "in": "query",
             "description": "Booking pagination",
+            "example": 1,
             "required": false,
             "schema": {
-              "type": "number"
+              "type": "integer",
+              "minimum": 1
             }
           }
         ],
@@ -1065,11 +1391,202 @@
             "description": "successful operation",
             "content": {
               "application/json": {
+                "examples": {
+                  "result": {
+                    "value": {
+                      "list": [
+                        {
+                          "bookId": "2407585",
+                          "status": "accepted",
+                          "bookingReference": "AT-12345678",
+                          "quoteId": "d0693c49-21bc-406c-8b34-71436ad136ab",
+                          "passenger": {
+                            "title": "Mr",
+                            "firstName": "John",
+                            "lastName": "Doe",
+                            "phone": "+12051234567"
+                          },
+                          "driver": {},
+                          "pickup": {
+                            "latitude": 35.7781475,
+                            "longitude": 140.380931,
+                            "postcode": "00000",
+                            "city": "Chiba",
+                            "timezone": "Asia/Tokyo",
+                            "offset": "+09:00",
+                            "country": "JP",
+                            "address": "Narita International Airport (NRT), 1-1 Furugome, Narita"
+                          },
+                          "destination": {
+                            "latitude": 35.6923658,
+                            "longitude": 139.7012228,
+                            "postcode": "00000",
+                            "city": "Tokyo",
+                            "timezone": "Asia/Tokyo",
+                            "offset": "+09:00",
+                            "country": "JP",
+                            "address": "Shinjuku Sta. Higashiguchi (East Exit), 3-chōme-24 Shinjuku, Shinjuku City"
+                          },
+                          "pickupDateTime": "2024-12-30T10:00:00.000Z",
+                          "comment": "I like to meet at Gate 2",
+                          "noPassengers": 1,
+                          "noLuggage": 2,
+                          "price": {
+                            "value": 100,
+                            "currencyISO": "USD"
+                          },
+                          "vehicleType": "Sedan"
+                        }
+                      ],
+                      "size": 20,
+                      "total": 1,
+                      "page": 1
+                    }
+                  }
+                },
                 "schema": {
                   "type": "object",
-                  "additionalProperties": {
-                    "type": "integer",
-                    "format": "int32"
+                  "properties": {
+                    "list": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "bookId": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "bookingReference": {
+                            "type": "string"
+                          },
+                          "quoteId": {
+                            "type": "string"
+                          },
+                          "passenger": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string"
+                              },
+                              "firstName": {
+                                "type": "string"
+                              },
+                              "lastName": {
+                                "type": "string"
+                              },
+                              "phone": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "driver": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "pickup": {
+                            "type": "object",
+                            "properties": {
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              },
+                              "postcode": {
+                                "type": "string"
+                              },
+                              "city": {
+                                "type": "string"
+                              },
+                              "timezone": {
+                                "type": "string"
+                              },
+                              "offset": {
+                                "type": "string"
+                              },
+                              "country": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "destination": {
+                            "type": "object",
+                            "properties": {
+                              "latitude": {
+                                "type": "number"
+                              },
+                              "longitude": {
+                                "type": "number"
+                              },
+                              "postcode": {
+                                "type": "string"
+                              },
+                              "city": {
+                                "type": "string"
+                              },
+                              "timezone": {
+                                "type": "string"
+                              },
+                              "offset": {
+                                "type": "string"
+                              },
+                              "country": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "pickupDateTime": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "comment": {
+                            "type": "string"
+                          },
+                          "noPassengers": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "noLuggage": {
+                            "type": "integer",
+                            "format": "int32"
+                          },
+                          "price": {
+                            "type": "object",
+                            "properties": {
+                              "value": {
+                                "type": "number"
+                              },
+                              "currencyISO": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "vehicleType": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "size": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "total": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "page": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
                   }
                 }
               }
@@ -1647,6 +2164,151 @@
           },
           "status": {
             "type": "string"
+          }
+        }
+      },
+      "HistoryResponse": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "bookId": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "bookingReference": {
+                  "type": "string"
+                },
+                "quoteId": {
+                  "type": "string"
+                },
+                "passenger": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "driver": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "pickup": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    },
+                    "postcode": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "timezone": {
+                      "type": "string"
+                    },
+                    "offset": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "destination": {
+                  "type": "object",
+                  "properties": {
+                    "latitude": {
+                      "type": "number"
+                    },
+                    "longitude": {
+                      "type": "number"
+                    },
+                    "postcode": {
+                      "type": "string"
+                    },
+                    "city": {
+                      "type": "string"
+                    },
+                    "timezone": {
+                      "type": "string"
+                    },
+                    "offset": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "pickupDateTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "noPassengers": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "noLuggage": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "price": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "number"
+                    },
+                    "currencyISO": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "vehicleType": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       },
