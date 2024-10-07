@@ -464,7 +464,8 @@
           "example": 1
           "required": false
           "schema":
-            "type": "number"
+            "type": "integer"
+            "minimum": 1
       "responses":
         "200":
           "description": "successful operation"
@@ -475,7 +476,7 @@
                   "value":
                     "list":
                       -
-                        "bookId": "2407584"
+                        "bookId": "2407585"
                         "status": "accepted"
                         "bookingReference": "AT-12345678"
                         "quoteId": "f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7"
@@ -973,7 +974,8 @@
           "example": 1
           "required": false
           "schema":
-            "type": "number"
+            "type": "integer"
+            "minimum": 1
       "responses":
         "200":
           "description": "successful operation"
