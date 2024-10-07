@@ -106,8 +106,12 @@
               "properties":
                 "pickupDateTime":
                   "type": "string"
+                  "description": >
+                    * `This is UTC time, need to convert the local Pickup Time to UTC datetime` 
                 "pickupTimezone":
                   "type": "string"
+                  "description": >
+                    * `recommend to send Supplier Timezone, e.g: Asia/Tokyo` 
                 "pickup":
                   "required":
                     - "latitude"
@@ -250,6 +254,18 @@
       "requestBody":
         "content":
           "application/json":
+            examples: 
+                booking:
+                  value:
+                    quoteId: f9c2a981-8dfa-4b26-b7c6-8a03ab5bc6c7
+                    bookingReference: '62549263846'
+                    comment: I like to meet at Gate 2
+                    flightNumber: AA888
+                    passenger:
+                      title: Mr
+                      phone: '+12051234567'
+                      firstName: John
+                      lastName: Doe                 
             "schema":
               "type": "object"
               "required":
@@ -621,16 +637,31 @@
           "in": "path"
           "description": "Booking ID"
           "required": true
+          
+                    
           "schema":
             "type": "integer"
       "requestBody":
         "content":
           "application/json":
+            examples: 
+                edit_booking:
+                  value:
+                    pickupDateTime: '2025-01-10T10:00:00.000Z'
+                    comment: I like to meet at Gate 3
+                    flightNumber: AA888
+                    passenger:
+                      title: Mr
+                      phone: '+12051234567'
+                      firstName: John
+                      lastName: Doe
             "schema":
               "type": "object"
               "properties":
                 "pickupDateTime":
                   "type": "string"
+                  "description": >
+                    * `This is UTC time, need to convert the local Pickup Time to UTC datetime` 
                 "comment":
                   "type": "string"
                 "flightNumber":
@@ -702,10 +733,23 @@
                 - "reasonCode"
                 - "reason"
               "properties":
+
                 "reasonCode":
-                  "type": "number"
+                  "type": "integer"
+                  "enum": [0, 1 , 2 ,3]
+                  "description": >
+                    Reason code: 
+
+                    * `0` - Passenger change travel plan 
+
+                    * `1` - Passenger entered wrong location
+
+                    * `2` - Partner has another supplier
+
+                    * `3` - Others. Get reason string in key: `reason`
                 "reason":
                   "type": "string"
+           
       "responses":
         "200":
           "description": "successful operation"
