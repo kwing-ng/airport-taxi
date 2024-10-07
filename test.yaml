@@ -106,8 +106,18 @@
               "properties":
                 "pickupDateTime":
                   "type": "string"
+                  "description": >
+                    `Note`: 
+
+                    * `This is UTC time, so please convert the local Pickup Time to UTC time` 
+
+  
                 "pickupTimezone":
                   "type": "string"
+                  "description": >
+                    `Note`: 
+
+                    * `recommend to send Asia/Tokyo` 
                 "pickup":
                   "required":
                     - "latitude"
