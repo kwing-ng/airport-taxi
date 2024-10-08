@@ -74,10 +74,10 @@
       "tags":
         - "Quotes"
       "summary": "Get AIRPORT TAXI quotations"
-      "description": "Request a quote for a ride. This endpoint provides estimated pricing based on the given parameters like location, destination, and ride type."
+      "description": "Request a quote for a ride. This endpoint provides estimated pricing based on the given parameters like location, destination, and ride type, Note: the pickupDateTime `MUST` be `UTC` time"
       "operationId": "getQuotation"
       "requestBody":
-        "description": "Request a quotation wich specified  Pickup and Dropped Off location, pickup time will be `UTC` Timezone"
+        "description": "Request a quotation"
         "content":
           "application/json":
             "examples":
