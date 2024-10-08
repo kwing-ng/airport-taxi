@@ -6,7 +6,7 @@
   "termsOfService": "https://www.airport-taxi.com/terms-and-conditions"
   "contact":
     "email": "lucas@airport-taxi.com"
-  "version": "1.0.1"
+  "version": "1.0.2"
 "servers":
   -
     "url": "https://api.airport-taxi.com"
@@ -105,7 +105,6 @@
               "type": "object"
               "required":
                 - "pickupDateTime"
-                - "pickupTimezone"
                 - "pickup"
                 - "destination"
               "properties":
@@ -114,7 +113,7 @@
                   "description": "* `This is UTC time, need to convert the local Pickup Time to UTC datetime`\n"
                 "pickupTimezone":
                   "type": "string"
-                  "description": "* `recommend to send Supplier Timezone, e.g: Asia/Tokyo`\n"
+                  "description": "* `If you know Supplier Timezone, e.g: Asia/Tokyo, else do not send this key`\n"
                 "pickup":
                   "required":
                     - "latitude"
@@ -1143,7 +1142,6 @@
       "type": "object"
       "required":
         - "pickupDateTime"
-        - "pickupTimezone"
         - "pickup"
         - "destination"
       "properties":
@@ -1704,18 +1702,6 @@
           "type": "string"
         "locationUpdatedAt":
           "type": "string"
-    "ApiResponse":
-      "type": "object"
-      "properties":
-        "code":
-          "type": "integer"
-          "format": "int32"
-        "type":
-          "type": "string"
-        "message":
-          "type": "string"
-      "xml":
-        "name": "##default"
   "securitySchemes":
     "bearerAuth":
       "type": "http"
