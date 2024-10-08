@@ -74,10 +74,10 @@
       "tags":
         - "Quotes"
       "summary": "Get AIRPORT TAXI quotations"
-      "description": "Request a quote for a ride. This endpoint provides estimated pricing based on the given parameters like location, destination, and ride type."
+      "description": "Request a quote for a ride. This endpoint provides estimated pricing based on the given parameters like location, destination, and ride type, Note: the pickupDateTime `MUST` be `UTC` time"
       "operationId": "getQuotation"
       "requestBody":
-        "description": "Request a quotation wich specified  Pickup and Dropped Off location, pickup time will be `UTC` Timezone"
+        "description": "Request a quotation"
         "content":
           "application/json":
             "examples":
@@ -1028,100 +1028,99 @@
                 "type": "object"
                 "properties":
                   "list":
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        bookId:
-                          type: string
-                        status:
-                          type: string
-                        bookingReference:
-                          type: string
-                        quoteId:
-                          type: string
-                        passenger:
-                          type: object
-                          properties:
-                            title:
-                              type: string
-                            firstName:
-                              type: string
-                            lastName:
-                              type: string
-                            phone:
-                              type: string
-                        driver:
-                          type: object
-                          properties: {}
-                        pickup:
-                          type: object
-                          properties:
-                            latitude:
-                              type: number
-                            longitude:
-                              type: number
-                            postcode:
-                              type: string
-                            city:
-                              type: string
-                            timezone:
-                              type: string
-                            offset:
-                              type: string
-                            country:
-                              type: string
-                            address:
-                              type: string
-                        destination:
-                          type: object
-                          properties:
-                            latitude:
-                              type: number
-                            longitude:
-                              type: number
-                            postcode:
-                              type: string
-                            city:
-                              type: string
-                            timezone:
-                              type: string
-                            offset:
-                              type: string
-                            country:
-                              type: string
-                            address:
-                              type: string
-                        pickupDateTime:
-                          type: string
-                          format: date-time
-                        comment:
-                          type: string
-                        noPassengers:
-                          type: integer
-                          format: int32
-                        noLuggage:
-                          type: integer
-                          format: int32
-                        price:
-                          type: object
-                          properties:
-                            value:
-                              type: number
-                            currencyISO:
-                              type: string
-                        vehicleType:
-                          type: string
+                    "type": "array"
+                    "items":
+                      "type": "object"
+                      "properties":
+                        "bookId":
+                          "type": "string"
+                        "status":
+                          "type": "string"
+                        "bookingReference":
+                          "type": "string"
+                        "quoteId":
+                          "type": "string"
+                        "passenger":
+                          "type": "object"
+                          "properties":
+                            "title":
+                              "type": "string"
+                            "firstName":
+                              "type": "string"
+                            "lastName":
+                              "type": "string"
+                            "phone":
+                              "type": "string"
+                        "driver":
+                          "type": "object"
+                          "properties": {}
+                        "pickup":
+                          "type": "object"
+                          "properties":
+                            "latitude":
+                              "type": "number"
+                            "longitude":
+                              "type": "number"
+                            "postcode":
+                              "type": "string"
+                            "city":
+                              "type": "string"
+                            "timezone":
+                              "type": "string"
+                            "offset":
+                              "type": "string"
+                            "country":
+                              "type": "string"
+                            "address":
+                              "type": "string"
+                        "destination":
+                          "type": "object"
+                          "properties":
+                            "latitude":
+                              "type": "number"
+                            "longitude":
+                              "type": "number"
+                            "postcode":
+                              "type": "string"
+                            "city":
+                              "type": "string"
+                            "timezone":
+                              "type": "string"
+                            "offset":
+                              "type": "string"
+                            "country":
+                              "type": "string"
+                            "address":
+                              "type": "string"
+                        "pickupDateTime":
+                          "type": "string"
+                          "format": "date-time"
+                        "comment":
+                          "type": "string"
+                        "noPassengers":
+                          "type": "integer"
+                          "format": "int32"
+                        "noLuggage":
+                          "type": "integer"
+                          "format": "int32"
+                        "price":
+                          "type": "object"
+                          "properties":
+                            "value":
+                              "type": "number"
+                            "currencyISO":
+                              "type": "string"
+                        "vehicleType":
+                          "type": "string"
                   "size":
-                    type: integer
-                    format: int32
+                    "type": "integer"
+                    "format": "int32"
                   "total":
-                    type: integer
-                    format: int32
+                    "type": "integer"
+                    "format": "int32"
                   "page":
-                    type: integer
-                    format: int32
-                  
+                    "type": "integer"
+                    "format": "int32"
       "security":
         -
           "bearerAuth": []
@@ -1506,101 +1505,99 @@
       "type": "object"
       "properties":
         "list":
-          type: array
-          items:
-            type: object
-            properties:
-              bookId:
-                type: string
-              status:
-                type: string
-              bookingReference:
-                type: string
-              quoteId:
-                type: string
-              passenger:
-                type: object
-                properties:
-                  title:
-                    type: string
-                  firstName:
-                    type: string
-                  lastName:
-                    type: string
-                  phone:
-                    type: string
-              driver:
-                type: object
-                properties: {}
-              pickup:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
-                  postcode:
-                    type: string
-                  city:
-                    type: string
-                  timezone:
-                    type: string
-                  offset:
-                    type: string
-                  country:
-                    type: string
-                  address:
-                    type: string
-              destination:
-                type: object
-                properties:
-                  latitude:
-                    type: number
-                  longitude:
-                    type: number
-                  postcode:
-                    type: string
-                  city:
-                    type: string
-                  timezone:
-                    type: string
-                  offset:
-                    type: string
-                  country:
-                    type: string
-                  address:
-                    type: string
-              pickupDateTime:
-                type: string
-                format: date-time
-              comment:
-                type: string
-              noPassengers:
-                type: integer
-                format: int32
-              noLuggage:
-                type: integer
-                format: int32
-              price:
-                type: object
-                properties:
-                  value:
-                    type: number
-                  currencyISO:
-                    type: string
-              vehicleType:
-                type: string
+          "type": "array"
+          "items":
+            "type": "object"
+            "properties":
+              "bookId":
+                "type": "string"
+              "status":
+                "type": "string"
+              "bookingReference":
+                "type": "string"
+              "quoteId":
+                "type": "string"
+              "passenger":
+                "type": "object"
+                "properties":
+                  "title":
+                    "type": "string"
+                  "firstName":
+                    "type": "string"
+                  "lastName":
+                    "type": "string"
+                  "phone":
+                    "type": "string"
+              "driver":
+                "type": "object"
+                "properties": {}
+              "pickup":
+                "type": "object"
+                "properties":
+                  "latitude":
+                    "type": "number"
+                  "longitude":
+                    "type": "number"
+                  "postcode":
+                    "type": "string"
+                  "city":
+                    "type": "string"
+                  "timezone":
+                    "type": "string"
+                  "offset":
+                    "type": "string"
+                  "country":
+                    "type": "string"
+                  "address":
+                    "type": "string"
+              "destination":
+                "type": "object"
+                "properties":
+                  "latitude":
+                    "type": "number"
+                  "longitude":
+                    "type": "number"
+                  "postcode":
+                    "type": "string"
+                  "city":
+                    "type": "string"
+                  "timezone":
+                    "type": "string"
+                  "offset":
+                    "type": "string"
+                  "country":
+                    "type": "string"
+                  "address":
+                    "type": "string"
+              "pickupDateTime":
+                "type": "string"
+                "format": "date-time"
+              "comment":
+                "type": "string"
+              "noPassengers":
+                "type": "integer"
+                "format": "int32"
+              "noLuggage":
+                "type": "integer"
+                "format": "int32"
+              "price":
+                "type": "object"
+                "properties":
+                  "value":
+                    "type": "number"
+                  "currencyISO":
+                    "type": "string"
+              "vehicleType":
+                "type": "string"
         "size":
-          type: integer
-          format: int32
+          "type": "integer"
+          "format": "int32"
         "total":
-          type: integer
-          format: int32
+          "type": "integer"
+          "format": "int32"
         "page":
-          type: integer
-          format: int32
-        
-
+          "type": "integer"
+          "format": "int32"
     "WebHookAssigned":
       "type": "object"
       "properties":
@@ -1705,7 +1702,6 @@
           "type": "string"
         "locationUpdatedAt":
           "type": "string"
-    
   "securitySchemes":
     "bearerAuth":
       "type": "http"
