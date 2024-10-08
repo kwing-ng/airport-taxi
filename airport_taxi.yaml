@@ -1142,7 +1142,6 @@
       "type": "object"
       "required":
         - "pickupDateTime"
-        - "pickupTimezone"
         - "pickup"
         - "destination"
       "properties":
@@ -1703,18 +1702,6 @@
           "type": "string"
         "locationUpdatedAt":
           "type": "string"
-    "ApiResponse":
-      "type": "object"
-      "properties":
-        "code":
-          "type": "integer"
-          "format": "int32"
-        "type":
-          "type": "string"
-        "message":
-          "type": "string"
-      "xml":
-        "name": "##default"
   "securitySchemes":
     "bearerAuth":
       "type": "http"
