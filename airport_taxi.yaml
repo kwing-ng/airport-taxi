@@ -77,7 +77,7 @@
       "description": "Request a quote for a ride. This endpoint provides estimated pricing based on the given parameters like location, destination, and ride type."
       "operationId": "getQuotation"
       "requestBody":
-        "description": "Send a ride request"
+        "description": "Request a quotation wich specified  Pickup and Dropped Off location, pickup time will be `UTC` Timezone"
         "content":
           "application/json":
             "examples":
